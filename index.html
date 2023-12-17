@@ -7,66 +7,73 @@
       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/htmlmixed/htmlmixed.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/css/css.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/theme/dracula.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/javascript/javascript.min.js"></script>
 	</head>
 	<body>
-		<div id="header">
-            <div id="logo">
-                CodePlayer
-            </div>
-            <div id="buttons">
-                <div class="toggleButton active" id="html">HTML</div>
-                <div class="toggleButton" id="css">CSS</div>
-                <div class="toggleButton" id="javascript">JavaScript</div>
-                <div class="toggleButton active" id="output">Output</div>
-            </div>
-        </div>
-		
-		<div id="bodyContainer">
-            <textarea id="htmlPanel" class="panel"><p id="demo">Hello World!</p></textarea>
-            <textarea id="cssPanel" class="panel hidden">p { color: green; }</textarea>
-            <textarea id="javascriptPanel" class="panel hidden">document.getElementById("demo").innerHTML = "wellcome!";</textarea>
-            <iframe id="outputPanel" class="panel"></iframe>
-        </div>
-		
-		<script type="text/javascript">
-		
-            function updateOutput() {
-                $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssPanel").val() + "</style></head><body>" + $("#htmlPanel").val() + "</body></html>");
-                document.getElementById("outputPanel").contentWindow.eval($("#javascriptPanel").val());
-            }
-			
-			
-            $(".toggleButton").hover(function() {
-                $(this).addClass("highlightedButton");
-            }, function() {
-                $(this).removeClass("highlightedButton");
-            });
-			
-			
-            $(".toggleButton").click(function() {
-                $(this).toggleClass("active");
-                $(this).removeClass("highlightedButton");
-                var panelId = $(this).attr("id") + "Panel";
-                $("#" + panelId).toggleClass("hidden");
-                var numberOfActivePanels = 4 - $('.hidden').length;
-                $(".panel").width(($(window).width() / numberOfActivePanels) - 10);
-            })
-			
-			
-            $(".panel").height($(window).height() - $("#header").height() - 15);
-            
-			
-			$(".panel").width(($(window).width() / 2) - 10);
-            
-			
-			updateOutput();
-            
-			
-			$("textarea").on('change keyup paste', function() {
+        <script>
+            $(function() {
+                var htmlEditor = CodeMirror.fromTextArea(document.getElementById("rb-html-panel"), {
+                    mode: "htmlmixed", // Set the initial mode (e.g., HTML)
+                    lineNumbers: true, // Enable line numbers (optional)
+                    theme: "dracula", 
+                    
+                });
+    
+                var cssEditor = CodeMirror.fromTextArea(document.getElementById("rb-css-panel"), {
+                    mode: "css", // Set the initial mode (e.g., HTML)
+                    lineNumbers: true, // Enable line numbers (optional)
+                    theme: "dracula", // Choose a theme (optional)
+                });
+                var javascriptEditor = CodeMirror.fromTextArea(document.getElementById("rb-javascript-panel"), {
+                    mode: "javascript", // Set the initial mode (e.g., HTML)
+                    lineNumbers: true, // Enable line numbers (optional)
+                    theme: "dracula", // Choose a theme (optional)
+                });
+    
+                // Function to update the output on output panel
+                function updateOutput() {
+                    $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + cssEditor.getValue() + "</style></head><body>" + htmlEditor.getValue() + "</body></html>");
+                    document.getElementById("rb-output-panel").contentWindow.eval(javascriptEditor.getValue());
+                }
+                
+                // updating output
                 updateOutput();
-            });
-			
+                
+                // on entering any letter in html or css or js it calls updateoutput() 
+                $("textarea").on('change keyup paste', function() {
+                    updateOutput();
+                });
+                
+            });       
         </script>
+            
+            <!-- Panels for the rb-code-editor-btn-grps on the Header Above -->
+        <div class="rb-row-flex rb-col-100">
+            <div class="rb-col-49 rb-code-lang-block rb-ht-vh-100">
+                <div>
+                    <p class="rb-bg-dark rb-text-orange rb-col-100 rb-text-center rb-mr-bot-0 rb-mr-top-0 rb-text-bold rb-pad-5-0">HTML</p>
+                    <textarea id="rb-html-panel" class="rb-code-editor-panel"><div id="demo">Hello World!</div></textarea>
+                </div>
+                <div>
+                    <p class="rb-bg-dark rb-text-orange rb-col-100 rb-text-center rb-mr-bot-0 rb-mr-top-0 rb-text-bold rb-pad-5-0">CSS</p>
+                    <textarea id="rb-css-panel" class="rb-code-editor-panel">html {background: #343a40;}
+    div { color: red; }
+                    </textarea>
+                </div>
+                <div>
+                    <p class="rb-bg-dark rb-text-orange rb-col-100 rb-text-center rb-mr-bot-0 rb-mr-top-0 rb-text-bold rb-pad-5-0">JavaScript</p>
+                    <textarea id="rb-javascript-panel" class="rb-code-editor-panel">document.getElementById("demo").innerHTML = "wellcome!";</textarea>
+                </div>
+            </div>
+            <div class="rb-col-49 rb-ht-vh-100">
+                <iframe id="rb-output-panel" class="rb-ht-vh-100 rb-col-100" style="border: none;"></iframe>
+            </div>
+        </div>
 	
 	</body>
 </html>	
