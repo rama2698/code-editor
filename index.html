@@ -115,7 +115,7 @@
                 function logMessage(type, message) {
                     var consoleDiv = document.getElementById('rb-js-console-block');
                     consoleDiv.innerHTML += `<div class="rb-row-flex rb-console-logs rb-justify-start rb-gap-6 ${type === "Log" ? 'rb-text-seal-blue rb-console-log-msg' : 'rb-text-red rb-console-err-msg'}" >
-                        ${(type === "Log") ? '<div class="rb-console-msg-pill rb-text-dark rb-text-center">Log</div>' : '<div class="rb-console-err-pill rb-text-dark rb-text-center">Error</div>'}
+                        ${(type === "Log") ? '<div class="rb-console-msg-pill rb-text-dark rb-text-center">&#8505;</div>' : '<div class="rb-console-err-pill rb-text-dark rb-text-center">&#9760;</div>'}
                         <div>${message}</div>
                         </div>`;
                 }
@@ -134,8 +134,6 @@
                         });
                     }
                 }
-
-                logMessage("Log", 'Editor initialized.');
 
                 $("#rb-run-btn").click(function() {
                     implementJS = true;
@@ -188,7 +186,7 @@
                 </div>
             </div>
             <div class="rb-col-49 rb-ht-vh-100 rb-pos-rel">
-                <p class="rb-bg-dark rb-text-orange rb-col-100 rb-text-center rb-mr-bot-0 rb-mr-top-0 rb-text-bold rb-pad-5-0"><button id="rb-run-btn" class="rb-cur-pointer">Run Code</button> Output</p>
+                <p class="rb-bg-dark rb-text-orange rb-col-100 rb-text-center rb-mr-bot-0 rb-mr-top-0 rb-text-bold rb-pad-5-0"><button id="rb-run-btn" class="rb-cur-pointer">&#x1f3c3; Run</button> Output</p>
                 <iframe id="rb-output-panel" class="rb-ht-vh-100 rb-col-100 rb-border-none rb-bg-white rb-ht-vh-81"></iframe>
                 <div class="rb-col-100 rb-js-console">
                     <div class="rb-col-100 rb-row-flex rb-bg-dark rb-justify-between rb-text-orange rb-col-100 rb-text-center rb-mr-bot-0 rb-mr-top-0 rb-text-bold rb-pad-5-0 rb-pos-sticky rb-top-0 rb-line-ht-22">
@@ -196,12 +194,13 @@
                             Console
                         </div> 
                         <div class="rb-wdt-150 rb-text-right rb-pad-rt-8">
-                            <span id="rb-console-show-all" class="rb-font-18 rb-text-white rb-mr-left-5 rb-cur-pointer" title="All Logs">&#10560;</span>
-                            <span id="rb-console-show-log" class="rb-font-18 rb-text-white rb-mr-left-5 rb-cur-pointer" title="Filter Info">&#8505;</span>
-                            <span id="rb-console-show-err" class="rb-font-18 rb-text-white rb-mr-left-5 rb-cur-pointer" title="Filter Error">&#9760;</span>
+                            <span id="rb-console-show-all" class="rb-font-18 rb-text-seal-blue rb-mr-left-5 rb-cur-pointer" title="All Logs">&#10560;</span>
+                            <span id="rb-console-show-log" class="rb-font-18 rb-text-green rb-mr-left-5 rb-cur-pointer" title="Filter Info">&#8505;</span>
+                            <span id="rb-console-show-err" class="rb-font-18 rb-text-red rb-mr-left-5 rb-cur-pointer" title="Filter Error">&#9760;</span>
                             <span id="rb-console-clear-btn" class="rb-text-white rb-mr-left-5 rb-cur-pointer" title="Clear Logs">Clear</span>
                         </div>
                     </div>
+                    <div class="rb-text-seal-blue rb-log-bg rb-font-14" style="padding-left:5px;"><span>&#9786;</span> <span class="rb-text-green">Editor Initialized</span></div>
                     <div id="rb-js-console-block" class="rb-col-100"></div>
                 </div>
             </div>

@@ -24,6 +24,7 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-wdt-60 {width: 60px;}
 .rb-wdt-150 {width: 150px;}
 .rb-font-18 { font-size: 18px; }
+.rb-font-14 { font-size: 14px; }
 .rb-text-white { color: #fff;}
 .rb-mr-left-5 { margin-left: 5px;}
 .rb-border-none {border: none;}
@@ -31,6 +32,8 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-top-0 {top: 0;}
 .rb-line-ht-22 {line-height: 22px;}
 .rb-cur-pointer { cursor: pointer;}
+.rb-text-green {color: #50fa7b;}
+.rb-log-bg {background: rgb(30, 29, 29);}
 
 
 .rb-code-editor-toggle-btn:hover , .rb-code-editor-btn-grps > .active { background-color: rgb(239, 87, 87);}
@@ -38,7 +41,7 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-code-lang-block {height: 100vh; overflow-y: auto; border-right: 2px solid grey;}
 .rb-code-lang-header {color:red;}
 .rb-js-console {position: absolute; font-size: 11px; bottom:0; height: 16vh; overflow-y: auto; overflow-x: hidden; background: #282a36;}
-.rb-console-logs {background-color: rgb(30, 29, 29);margin: 2px 0px; padding: 5px 2px;}
-.rb-console-msg-pill {background-color: #50fa7b; min-width: 37px; height: 13px;font-weight:bold; border-radius: 10px;}
-.rb-console-err-pill {background-color: red; min-width: 37px; height: 13px; font-weight:bold; border-radius: 10px;}
+.rb-console-logs {background-color: rgb(30, 29, 29);margin: 2px 0px; padding: 5px 4px;}
+.rb-console-msg-pill {background-color: #50fa7b; min-width: 25px; font-size: 16px; height: 13px; line-height: 12px; font-weight:bold; border-radius: 10px;}
+.rb-console-err-pill {background-color: red; min-width: 25px; height: 13px; font-size: 16px; line-height:12px; font-weight:bold; border-radius: 10px;}
 .rb-console-pill {padding-left: 5px;}
