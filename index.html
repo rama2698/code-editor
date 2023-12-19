@@ -114,7 +114,6 @@
                 // Function to log messages
                 function logMessage(type, message) {
                     var consoleDiv = document.getElementById('rb-js-console-block');
-                    // const msgPill = (type === "Log") ? 
                     consoleDiv.innerHTML += `<div class="rb-row-flex rb-console-logs rb-justify-start rb-gap-6 ${type === "Log" ? 'rb-text-seal-blue rb-console-log-msg' : 'rb-text-red rb-console-err-msg'}" >
                         ${(type === "Log") ? '<div class="rb-console-msg-pill rb-text-dark rb-text-center">Log</div>' : '<div class="rb-console-err-pill rb-text-dark rb-text-center">Error</div>'}
                         <div>${message}</div>
@@ -129,10 +128,11 @@
                 // function to hide/show display
                 function showDisplay(type, value) {
                     const logList = document.querySelectorAll('.rb-console-'+type+'-msg');
-                    logList.forEach(function(element) {
-                        element.style.display = value;
-                    });
-                    
+                    if (logList){
+                        logList.forEach(function(element) {
+                            element.style.display = value;
+                        });
+                    }
                 }
 
                 logMessage("Log", 'Editor initialized.');
