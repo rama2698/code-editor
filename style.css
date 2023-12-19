@@ -1,5 +1,6 @@
 body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: hidden; }
 .rb-pos-rel {position: relative;}
+.rb-pos-abs {position: absolute;}
 .rb-pos-sticky {position: sticky;}
 .rb-col-100 { width: 100%;}
 .rb-col-49 { width: 49.5%;}
@@ -30,6 +31,8 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-border-none {border: none;}
 .rb-bg-white { background-color: #fff;}
 .rb-top-0 {top: 0;}
+.rb-top-2 {top: 2px;}
+.rb-left-8 {left: 8px;}
 .rb-line-ht-22 {line-height: 22px;}
 .rb-cur-pointer { cursor: pointer;}
 .rb-text-green {color: #50fa7b;}
