@@ -1,17 +1,44 @@
-body { font-family: sans-serif; margin: 0px; background-color:grey; overflow: hidden; }
+body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: hidden; }
+.rb-pos-rel {position: relative;}
+.rb-pos-sticky {position: sticky;}
 .rb-col-100 { width: 100%;}
 .rb-col-49 { width: 49.5%;}
 .rb-ht-vh-100 { height: 100vh;}
+.rb-ht-vh-81 { height: 81vh;}
 .rb-row-flex {display: flex; flex-direction: row; justify-content: center;}
 .rb-text-orange {color: rgb(237, 159, 14);}
 .rb-bg-dark {background-color: #343a40;}
 .rb-text-center {text-align: center;}
+.rb-text-right {text-align: right;}
 .rb-text-bold {font-weight: bold;}
 .rb-mr-top-0 {margin-top: 0px;}
 .rb-mr-bot-0 { margin-bottom: 0px;}
 .rb-pad-5-0 {padding: 5px 0px;}
+.rb-pad-rt-8 {padding-right: 8px;}
+.rb-text-red {color: red;}
+.rb-text-seal-blue {color: rgb(0, 229, 255);}
+.rb-text-dark {color: rgb(30, 29, 29);}
+.rb-justify-start { justify-content: start;}
+.rb-justify-between {justify-content: space-between;}
+.rb-gap-6 { gap: 6px;}
+.rb-wdt-60 {width: 60px;}
+.rb-wdt-150 {width: 150px;}
+.rb-font-18 { font-size: 18px; }
+.rb-text-white { color: #fff;}
+.rb-mr-left-5 { margin-left: 5px;}
+.rb-border-none {border: none;}
+.rb-bg-white { background-color: #fff;}
+.rb-top-0 {top: 0;}
+.rb-line-ht-22 {line-height: 22px;}
+.rb-cur-pointer { cursor: pointer;}
+
 
 .rb-code-editor-toggle-btn:hover , .rb-code-editor-btn-grps > .active { background-color: rgb(239, 87, 87);}
 .rb-code-editor-highlight-btn { background-color: yellow;}
 .rb-code-lang-block {height: 100vh; overflow-y: auto; border-right: 2px solid grey;}
 .rb-code-lang-header {color:red;}
+.rb-js-console {position: absolute; font-size: 11px; bottom:0; height: 16vh; overflow-y: auto; overflow-x: hidden; background: #282a36;}
+.rb-console-logs {background-color: rgb(30, 29, 29);margin: 2px 0px; padding: 5px 2px;}
+.rb-console-msg-pill {background-color: #50fa7b; min-width: 37px; height: 13px;font-weight:bold; border-radius: 10px;}
+.rb-console-err-pill {background-color: red; min-width: 37px; height: 13px; font-weight:bold; border-radius: 10px;}
+.rb-console-pill {padding-left: 5px;}
