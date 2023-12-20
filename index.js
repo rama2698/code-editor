@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // run the script
+    implementJS = true;
     runCode();
 
     // Function to log messages
