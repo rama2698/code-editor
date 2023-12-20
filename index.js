@@ -1,4 +1,4 @@
-$(document).ready(function()  {
+document.addEventListener('DOMContentLoaded', function() {
     var htmlEditor = CodeMirror.fromTextArea(document.getElementById("rb-html-panel"), {
         mode: "htmlmixed", // Set the initial mode (e.g., HTML)
         lineNumbers: true, // Enable line numbers (optional)
@@ -23,7 +23,15 @@ $(document).ready(function()  {
 
     // Function to update the output on output panel
     function updateOutput() {
-        $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + cssEditor.getValue() + "</style></head><body>" + htmlEditor.getValue() + "</body></html>");
+        var iframe = document.getElementById('rb-output-panel');
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        var htmlString = "<html><head><style type='text/css'>" + cssEditor.getValue() + "</style></head><body>" + htmlEditor.getValue() + "</body></html>";
+
+        // Set the content of the iframe's document
+        iframeDocument.open();
+        iframeDocument.write(htmlString);
+        iframeDocument.close();
+
         if(implementJS){
             document.getElementById("rb-output-panel").contentWindow.eval(javascriptEditor.getValue());
             compiledJSCode = javascriptEditor.getValue();
@@ -32,12 +40,12 @@ $(document).ready(function()  {
         else if(compiledJSCode){
             document.getElementById("rb-output-panel").contentWindow.eval(compiledJSCode);
         }
-        var scrollableDiv = $('#console');
-        scrollableDiv.scrollTop(scrollableDiv.prop('scrollHeight'));
     }
     
-    // updating output
-    updateOutput();
+    function scrollConsoleBottom(){
+        var scrollableDiv = document.getElementById("rb-console-panel");
+        scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+    }
     
     function runCode() {
         try {
@@ -79,10 +87,12 @@ $(document).ready(function()  {
                     setTimeout(function () {
                         document.body.removeChild(iframe);
                     }, 100);
+                    scrollConsoleBottom();
                 } catch (error) {
                     if (error.message){
                         logError(error.message);
                     }
+                    scrollConsoleBottom();
                 }
             }
             document.body.appendChild(iframe);
@@ -91,9 +101,13 @@ $(document).ready(function()  {
             if (error.message){
                 logError(error.message);
             }
+            scrollConsoleBottom();
         }
         
     }
+
+    // run the script
+    runCode();
 
     // Function to log messages
     function logMessage(type, message) {
@@ -119,37 +133,37 @@ $(document).ready(function()  {
         }
     }
 
-    $("#rb-run-btn").click(function() {
+    document.getElementById("rb-run-btn").addEventListener("click", function() {
         implementJS = true;
         runCode();
     });
 
     // to clear console messages
-    $("#rb-console-clear-btn").click(function() {
+    document.getElementById("rb-console-clear-btn").addEventListener("click", function() {
         const consoleBlock = document.getElementById("rb-js-console-block");
         if (consoleBlock) consoleBlock.innerHTML = ""; 
     });
 
     // to filter errors
-    $("#rb-console-show-err").click(function() {
+    document.getElementById("rb-console-show-err").addEventListener("click", function() {
         showDisplay('log', 'none');
         showDisplay('err', 'flex');
     });
 
     // to filter info logs
-    $("#rb-console-show-log").click(function() {
+    document.getElementById("rb-console-show-log").addEventListener("click", function() {
         showDisplay('log', 'flex');
         showDisplay('err', 'none');
     });
 
     // to show all logs
-    $("#rb-console-show-all").click(function() {
+    document.getElementById("rb-console-show-all").addEventListener("click", function() {
         showDisplay('log', 'flex');
         showDisplay('err', 'flex');
     });
 
     //full screen
-    $("#rb-console-fullscreen").click(function() {
+    document.getElementById("rb-console-fullscreen").addEventListener("click", function() {
         if(outputBlock) outputBlock.style.height = '21vh';
         if(consoleBlock) consoleBlock.style.height = '75.5vh';
         document.getElementById("rb-console-fullscreen").style.display = 'none';
@@ -157,7 +171,7 @@ $(document).ready(function()  {
     });
 
     // minimize screen
-    $("#rb-console-minimize").click(function() {
+    document.getElementById("rb-console-minimize").addEventListener("click", function() {
         if(outputBlock) outputBlock.style.height = '81vh';
         if(consoleBlock) consoleBlock.style.height = '16vh';
         document.getElementById("rb-console-fullscreen").style.display = 'inline';
