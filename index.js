@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var compiledJSCode = "";
     var outputBlock = document.getElementById("rb-output-panel");
     var consoleBlock = document.getElementById("rb-console-panel");
+    var consoleErrBtn = document.getElementById("rb-console-show-err");
+    var consoleInfoBtn = document.getElementById("rb-console-show-log");
+    var consoleAllBtn = document.getElementById("rb-console-show-all");
+    
+    consoleAllBtn.style.borderBottom = "2px solid rgb(237, 159, 14)";
 
     // Function to update the output on output panel
     function updateOutput() {
@@ -148,18 +153,27 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("rb-console-show-err").addEventListener("click", function() {
         showDisplay('log', 'none');
         showDisplay('err', 'flex');
+        consoleErrBtn.style.borderBottom = "2px solid rgb(237, 159, 14)";
+        consoleInfoBtn.style.borderBottom = "none";
+        consoleAllBtn.style.borderBottom = "none";
     });
 
     // to filter info logs
     document.getElementById("rb-console-show-log").addEventListener("click", function() {
         showDisplay('log', 'flex');
         showDisplay('err', 'none');
+        consoleErrBtn.style.borderBottom = "none";
+        consoleInfoBtn.style.borderBottom = "2px solid rgb(237, 159, 14)";
+        consoleAllBtn.style.borderBottom = "none";
     });
 
     // to show all logs
     document.getElementById("rb-console-show-all").addEventListener("click", function() {
         showDisplay('log', 'flex');
         showDisplay('err', 'flex');
+        consoleErrBtn.style.borderBottom = "none";
+        consoleInfoBtn.style.borderBottom = "none";
+        consoleAllBtn.style.borderBottom = "2px solid rgb(237, 159, 14)";
     });
 
     //full screen
