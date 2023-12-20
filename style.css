@@ -18,6 +18,7 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-pad-rt-8 {padding-right: 8px;}
 .rb-text-red {color: red;}
 .rb-text-seal-blue {color: rgb(0, 229, 255);}
+.rb-bg-seal-blue {background-color: rgb(0, 229, 255);}
 .rb-text-dark {color: rgb(30, 29, 29);}
 .rb-justify-start { justify-content: start;}
 .rb-justify-between {justify-content: space-between;}
@@ -31,8 +32,8 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-border-none {border: none;}
 .rb-bg-white { background-color: #fff;}
 .rb-top-0 {top: 0;}
-.rb-top-2 {top: 2px;}
-.rb-left-8 {left: 8px;}
+.rb-top-3 {top: 3px;}
+.rb-left-10 {left: 10px;}
 .rb-line-ht-22 {line-height: 22px;}
 .rb-cur-pointer { cursor: pointer;}
 .rb-text-green {color: #50fa7b;}
@@ -49,3 +50,5 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-console-msg-pill {background-color: #50fa7b; min-width: 25px; font-size: 16px; height: 13px; line-height: 12px; font-weight:bold; border-radius: 10px;}
 .rb-console-err-pill {background-color: red; min-width: 25px; height: 13px; font-size: 16px; line-height:12px; font-weight:bold; border-radius: 10px;}
 .rb-console-pill {padding-left: 5px;}
+
+#rb-run-btn:hover {background-color: #50fa7b;}
