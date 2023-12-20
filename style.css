@@ -37,6 +37,7 @@ body { font-family: sans-serif; margin: 0px; background-color:grey; overflow-x: 
 .rb-cur-pointer { cursor: pointer;}
 .rb-text-green {color: #50fa7b;}
 .rb-log-bg {background: rgb(30, 29, 29);}
+.rb-disp-none {display: none;}
 
 
 .rb-code-editor-toggle-btn:hover , .rb-code-editor-btn-grps > .active { background-color: rgb(239, 87, 87);}
