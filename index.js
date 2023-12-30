@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         theme: "dracula", 
         
     });
+    htmlEditor.on("keydown", function (cm, event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            cm.replaceSelection("\n");
+        }
+    });
 
     var cssEditor = CodeMirror.fromTextArea(document.getElementById("rb-css-panel"), {
         mode: "css", // Set the initial mode (e.g., HTML)
